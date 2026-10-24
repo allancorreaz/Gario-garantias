@@ -9,7 +9,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-WAL-003B57?logo=sqlite&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
-![Versão](https://img.shields.io/badge/vers%C3%A3o-1.1.0-e86c24)
+![Versão](https://img.shields.io/badge/vers%C3%A3o-1.2.0-e86c24)
 ![Status](https://img.shields.io/badge/status-em%20homologa%C3%A7%C3%A3o-orange)
 
 Projeto independente, idealizado e desenvolvido por **[Allan De Melo Correa](https://www.contatoallancorrea.com.br/)**.
@@ -212,8 +212,9 @@ Detalhes em [docs/seguranca.md](docs/seguranca.md).
 | Versão | Tema |
 |---|---|
 | **1.0** | Garantias a partir das planilhas |
-| **1.1** (atual) | CSV da lista, filtros lembrados, histórico na ficha, backup criptografado no Drive, testes automáticos e carregamento mais rápido |
-| **1.2** | Avisos automáticos por e-mail e WhatsApp |
+| **1.1** | CSV da lista, filtros lembrados, histórico na ficha, backup criptografado no Drive, testes automáticos e carregamento mais rápido |
+| **1.2** (atual) | Backup no Drive por quantidade de cópias e projeto organizado; liberada para todos |
+| **1.3** | Avisos automáticos por e-mail e WhatsApp |
 | **2.0** | **Gario Gestão:** núcleo comum, fontes de dados plugáveis (planilhas, banco do ERP, APIs) e módulos de negócio além das garantias |
 
 Detalhes em [Versões e roadmap](docs/versoes.md).

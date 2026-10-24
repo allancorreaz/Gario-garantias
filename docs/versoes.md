@@ -4,7 +4,7 @@
 
 O Gario segue o [Versionamento Semântico](https://semver.org/lang/pt-BR/) (MAJOR.MINOR.PATCH), registra cada versão num changelog no padrão [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e usa [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.0/), com um assunto por commit (`feat`, `fix`, `perf`, `refactor`, `test`, `docs`, `chore`).
 
-**Nesta página:** [Linha do tempo](#linha-do-tempo) · [1.1.0](#110--24102026) · [1.0.0](#100--24102026) · [Próximas versões](#próximas-versões) · [Como uma versão é lançada](#como-uma-versão-é-lançada)
+**Nesta página:** [Linha do tempo](#linha-do-tempo) · [1.2.0](#120--24102026) · [1.1.0](#110--24102026) · [1.0.0](#100--24102026) · [Próximas versões](#próximas-versões) · [Como uma versão é lançada](#como-uma-versão-é-lançada)
 
 ## Linha do tempo
 
@@ -12,8 +12,17 @@ O Gario segue o [Versionamento Semântico](https://semver.org/lang/pt-BR/) (MAJO
 |---|---|---|
 | **1.0** | Garantias a partir das planilhas | Lançada em 24/10/2026 |
 | **1.1** | Melhorias de uso, desempenho, testes e backup externo | Lançada em 24/10/2026 |
-| **1.2** | Avisos automáticos por e-mail e WhatsApp | Planejada |
+| **1.2** | Backup no Drive por quantidade de cópias e projeto organizado; liberada para todos | Lançada em 24/10/2026 |
+| **1.3** | Avisos automáticos por e-mail e WhatsApp | Planejada |
 | **2.0** | Gario Gestão: módulos e novas fontes de dados | Planejada |
+
+## 1.2.0 · 24/10/2026
+
+Versão liberada para uso por todos os usuários.
+
+- **Backup no Drive por quantidade:** ficam só as cópias mais recentes (padrão: 2), e as antigas são apagadas a cada envio.
+- **Projeto organizado:** testes de sincronização agrupados e scripts de uso único removidos.
+- **Documentação:** para que serve a chave de criptografia do backup e o que fazer se ela for perdida ou vazar.
 
 ## 1.1.0 · 24/10/2026
 
@@ -35,7 +44,7 @@ Primeira versão estável, em período de testes com os usuários: sincronizaç�
 
 ## Próximas versões
 
-### 1.2: avisos automáticos
+### 1.3: avisos automáticos
 - **Resumo diário por e-mail**, pelo servidor de e-mail da empresa: processos críticos, o que mudou ontem e pendências por loja.
 - **WhatsApp** pela API oficial da Meta (WhatsApp Cloud API), com número próprio da empresa.
 - **Alertas na hora** para processo que virou crítico, falha de leitura da planilha e divergência planilha × banco.
