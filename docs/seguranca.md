@@ -1,6 +1,6 @@
 # Segurança
 
-[← Voltar ao início](../README.md)
+[Início](../README.md) · [Funcionalidades](funcionalidades.md) · [Arquitetura](arquitetura.md) · [Stack](stack.md) · [Código e dados](codigo-e-dados.md) · [Dados e sincronização](dados-e-sincronizacao.md) · [Métricas](metricas.md) · [Segurança](seguranca.md) · [Operação](operacao.md)
 
 | Camada | Proteção |
 |---|---|

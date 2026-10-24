@@ -23,8 +23,11 @@ Projeto independente, idealizado e desenvolvido por **[Allan De Melo Correa](htt
 
 ## Sumário
 
+**Nesta página**
+
 - [O problema](#o-problema)
 - [A solução](#a-solução)
+- [Do salvamento na planilha até a tela](#do-salvamento-na-planilha-até-a-tela)
 - [Principais recursos](#principais-recursos)
 - [Galeria](#galeria)
 - [Arquitetura em uma imagem](#arquitetura-em-uma-imagem)
@@ -32,6 +35,17 @@ Projeto independente, idealizado e desenvolvido por **[Allan De Melo Correa](htt
 - [Segurança em resumo](#segurança-em-resumo)
 - [Documentação detalhada](#documentação-detalhada)
 - [Autor](#autor)
+
+**Páginas da documentação**
+
+1. [Funcionalidades](docs/funcionalidades.md): cada tela, com imagem e explicação
+2. [Arquitetura](docs/arquitetura.md): containers e fluxos de sincronização, login e consulta
+3. [Stack](docs/stack.md): cada tecnologia e por que foi escolhida
+4. [Código e dados](docs/codigo-e-dados.md): organização do código, modelo de dados e rotas
+5. [Dados e sincronização](docs/dados-e-sincronizacao.md): regras de leitura, validação, alterações e backups
+6. [Métricas](docs/metricas.md): como cada número é calculado
+7. [Segurança](docs/seguranca.md): todas as camadas de proteção
+8. [Operação](docs/operacao.md): atualização, homologação, planilha renomeada e problemas comuns
 
 ---
 
@@ -59,6 +73,20 @@ flowchart LR
     C --> D["Painel atualiza<br/>sozinho para todos"]
 ```
 
+## Do salvamento na planilha até a tela
+
+Do momento em que alguém salva a planilha até o número mudar na tela de todos, passam **no máximo cerca de 80 segundos**:
+
+| Momento | O que acontece |
+|---|---|
+| 0 s | Alguém do setor salva a planilha no Google Drive |
+| até 60 s | O sincronizador faz a checagem do minuto e percebe que o arquivo mudou |
+| + poucos segundos | Baixa uma cópia, valida, grava no banco numa única transação e registra o que mudou e quem salvou |
+| + até 20 s | A tela, que consulta a versão dos dados a cada 20 s, percebe a versão nova e recarrega sozinha |
+| na hora | Aparecem o aviso de atualização no topo e o selo **Mudou** ao lado de cada processo alterado |
+
+Se a planilha chegar incompleta (aba vazia, coluna faltando, queda grande no total), a leitura é cancelada e o banco continua intacto.
+
 ## Principais recursos
 
 | Recurso | O que entrega |
@@ -67,6 +95,8 @@ flowchart LR
 | **Somente leitura garantida** | O acesso ao Google Drive é autorizado só para leitura, e o sistema se recusa a rodar se essa permissão mudar. |
 | **Proteção contra planilha incompleta** | Uma leitura cortada ou com abas vazias é bloqueada e não apaga dados. Ou entra a leitura inteira, ou nada entra. |
 | **Validação contínua** | Uma segunda leitura, independente da primeira, compara a planilha com o banco linha a linha e avisa se algo não bater. |
+| **Busca e filtros na lista** | A lista de processos tem busca e filtros por andamento, origem, loja, fornecedor, situação na planilha, tempo em aberto e "só os que mudaram". |
+| **Selo "Mudou" no processo** | O CRM alterado nos últimos 7 dias ganha um selo; ao clicar, aparece o que mudou (valor antigo → novo), quando e quem salvou. |
 | **Detalhamento com um clique** | Todo indicador, ranking, faixa de atraso e mês do gráfico abre a lista de processos daquele número, com a ficha completa de cada um. |
 | **Pendências e alertas** | Prioridade por tempo em aberto, sinais de atenção, inconsistências da planilha e exportação em CSV. |
 | **Maior demora de retorno** | Rankings de fornecedores, lojas e produtos que estão há mais tempo sem dar retorno. |
@@ -74,7 +104,7 @@ flowchart LR
 | **Data de solução** | A planilha não tinha essa informação; o Gario passou a registrar o dia em que cada processo muda para resolvido. |
 | **Acesso por loja** | Login individual, perfis de administrador e operador, e restrição por loja aplicada no servidor. |
 | **Avisos para todos** | Se uma leitura falhar, todos os usuários veem um aviso de que os números podem estar desatualizados. |
-| **Ajuda em todo lugar** | Ícone de ajuda em cada bloco e em cada coluna, tutorial guiado no primeiro acesso e guia em linguagem simples. |
+| **Ajuda em todo lugar** | Ícone de ajuda em cada bloco e em cada coluna, tutorial guiado no primeiro acesso, guia em linguagem simples e a aba **Instruções**, que explica como cada métrica é calculada. |
 | **Celular e tablet** | Layout responsivo; no celular, as tabelas viram cartões legíveis. |
 | **Backup diário** | Cópia verificada do banco todos os dias, com retenção de 7 dias. |
 
@@ -86,6 +116,8 @@ flowchart LR
 | ![Painel de detalhe](imagens/04-painel-de-detalhe.png) **Ficha completa do processo** | ![Pendências e alertas](imagens/05-pendencias-e-alertas.png) **Pendências e alertas** |
 | ![Maior demora de retorno](imagens/06-maior-demora-de-retorno.png) **Maior demora de retorno** | ![Ranking completo](imagens/07-ranking-completo.png) **Ranking completo com pesquisa** |
 | ![Etapas do parceiro](imagens/08-etapas-do-parceiro.png) **Etapas do fornecedor parceiro** | ![Alterações](imagens/09-alteracoes-nas-planilhas.png) **O que mudou nas planilhas** |
+| ![Filtros da lista](imagens/16-filtros-da-lista.png) **Busca e filtros por coluna** | ![Selo Mudou](imagens/17-selo-mudou-na-lista.png) **Selo "Mudou" e "Novo" no CRM** |
+| ![O que mudou](imagens/18-o-que-mudou-no-processo.png) **O que mudou no processo** | ![Instruções](imagens/19-instrucoes.png) **Instruções: como cada métrica é calculada** |
 | ![Guia da data de solução](imagens/10-guia-da-data-de-solucao.png) **Guia em linguagem simples** | ![Administração](imagens/11-administracao.png) **Usuários, lojas e auditoria** |
 
 <p align="center">
@@ -156,12 +188,16 @@ Detalhes em [docs/seguranca.md](docs/seguranca.md).
 
 ## Documentação detalhada
 
-| Documento | Conteúdo |
-|---|---|
-| [Funcionalidades](docs/funcionalidades.md) | Cada tela, com imagem e explicação |
-| [Arquitetura](docs/arquitetura.md) | Containers, fluxos de sincronização, login e consulta |
-| [Dados e sincronização](docs/dados-e-sincronizacao.md) | Regras de leitura, validação, alterações, data de solução e backups |
-| [Segurança](docs/seguranca.md) | Todas as camadas de proteção |
+| # | Página | Conteúdo |
+|---|---|---|
+| 1 | [Funcionalidades](docs/funcionalidades.md) | Cada tela, com imagem e explicação, incluindo filtros, selo "Mudou" e Instruções |
+| 2 | [Arquitetura](docs/arquitetura.md) | Containers, fluxos de sincronização, login e consulta com isolamento por loja |
+| 3 | [Stack](docs/stack.md) | Cada tecnologia, o papel dela no sistema e por que foi escolhida |
+| 4 | [Código e dados](docs/codigo-e-dados.md) | Organização do código, modelo de dados e grupos de rotas da API |
+| 5 | [Dados e sincronização](docs/dados-e-sincronizacao.md) | Regras de leitura, validação contínua, alterações, data de solução e backups |
+| 6 | [Métricas](docs/metricas.md) | Como cada indicador, prioridade e alerta é calculado |
+| 7 | [Segurança](docs/seguranca.md) | Todas as camadas de proteção e o roteiro de homologação |
+| 8 | [Operação](docs/operacao.md) | Atualização, planilha renomeada, aba ou planilha nova e problemas comuns |
 
 ## Autor
 
