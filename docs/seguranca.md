@@ -25,7 +25,7 @@ As planilhas permitem recriar os processos, mas não os usuários e senhas, a au
 |---|---|
 | **Acesso separado** | Um segundo acesso ao Drive, autorizado só com o escopo `drive.file`: o Gario enxerga e apaga apenas os arquivos que ele mesmo criou. O acesso das planilhas continua somente leitura, e o sistema se recusa a enviar se os escopos não estiverem assim |
 | **Criptografia** | AES-256-GCM, com chave derivada por scrypt. Sem a chave, guardada fora do servidor, o arquivo no Drive não abre; qualquer alteração no arquivo é detectada |
-| **Retenção** | 30 dias no Drive, além dos 7 dias no servidor |
+| **Retenção** | Só as cópias mais recentes ficam no Drive (padrão: 2); a cada envio, as mais antigas são apagadas. No servidor, 7 dias |
 | **Falha isolada** | Se o envio falhar, o backup local continua valendo e o aviso aparece na Administração |
 
 ## Roteiro de homologação

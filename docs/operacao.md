@@ -69,5 +69,5 @@ O Gario acha cada planilha pelo **nome exato do arquivo** no Drive. Se alguém r
 - **Quando:** um por dia, de madrugada, além de um a cada homologação.
 - **Verificação:** cada cópia passa por checagem de integridade.
 - **Retenção:** 7 dias, sempre mantendo os mais recentes.
-- **Cópia no Drive (opcional):** criptografada, em pasta própria, com 30 dias de retenção (veja [Segurança](seguranca.md)).
+- **Cópia no Drive (opcional):** criptografada, em pasta própria, mantendo só as cópias mais recentes (padrão: 2) (veja [Segurança](seguranca.md)).
 - **Onde ver:** o resultado aparece em Administração.
