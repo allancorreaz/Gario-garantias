@@ -9,6 +9,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-WAL-003B57?logo=sqlite&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
+![Versão](https://img.shields.io/badge/vers%C3%A3o-1.1.0-e86c24)
 ![Status](https://img.shields.io/badge/status-em%20homologa%C3%A7%C3%A3o-orange)
 
 Projeto independente, idealizado e desenvolvido por **[Allan De Melo Correa](https://www.contatoallancorrea.com.br/)**.
@@ -34,6 +35,7 @@ Projeto independente, idealizado e desenvolvido por **[Allan De Melo Correa](htt
 - [Tecnologias](#tecnologias)
 - [Segurança em resumo](#segurança-em-resumo)
 - [Documentação detalhada](#documentação-detalhada)
+- [Versões e próximos passos](#versões-e-próximos-passos)
 - [Autor](#autor)
 
 **Páginas da documentação**
@@ -46,6 +48,7 @@ Projeto independente, idealizado e desenvolvido por **[Allan De Melo Correa](htt
 6. [Métricas](docs/metricas.md): como cada número é calculado
 7. [Segurança](docs/seguranca.md): todas as camadas de proteção
 8. [Operação](docs/operacao.md): atualização, homologação, planilha renomeada e problemas comuns
+9. [Versões e roadmap](docs/versoes.md): o que mudou em cada versão e o que vem a seguir
 
 ---
 
@@ -96,6 +99,8 @@ Se a planilha chegar incompleta (aba vazia, coluna faltando, queda grande no tot
 | **Proteção contra planilha incompleta** | Uma leitura cortada ou com abas vazias é bloqueada e não apaga dados. Ou entra a leitura inteira, ou nada entra. |
 | **Validação contínua** | Uma segunda leitura, independente da primeira, compara a planilha com o banco linha a linha e avisa se algo não bater. |
 | **Busca e filtros na lista** | A lista de processos tem busca e filtros por andamento, origem, loja, fornecedor, situação na planilha, tempo em aberto e "só os que mudaram". |
+| **Exportar e lembrar** | A lista filtrada vira CSV com um clique, e cada pessoa reabre a tela com os últimos filtros que usou. |
+| **Histórico na ficha** | Cada processo mostra a linha do tempo completa das mudanças desde o início do acompanhamento. |
 | **Selo "Mudou" no processo** | O CRM alterado nos últimos 7 dias ganha um selo; ao clicar, aparece o que mudou (valor antigo → novo), quando e quem salvou. |
 | **Detalhamento com um clique** | Todo indicador, ranking, faixa de atraso e mês do gráfico abre a lista de processos daquele número, com a ficha completa de cada um. |
 | **Pendências e alertas** | Prioridade por tempo em aberto, sinais de atenção, inconsistências da planilha e exportação em CSV. |
@@ -106,7 +111,8 @@ Se a planilha chegar incompleta (aba vazia, coluna faltando, queda grande no tot
 | **Avisos para todos** | Se uma leitura falhar, todos os usuários veem um aviso de que os números podem estar desatualizados. |
 | **Ajuda em todo lugar** | Ícone de ajuda em cada bloco e em cada coluna, tutorial guiado no primeiro acesso, guia em linguagem simples e a aba **Instruções**, que explica como cada métrica é calculada. |
 | **Celular e tablet** | Layout responsivo; no celular, as tabelas viram cartões legíveis. |
-| **Backup diário** | Cópia verificada do banco todos os dias, com retenção de 7 dias. |
+| **Backup diário** | Cópia verificada do banco todos os dias, com retenção de 7 dias, e cópia criptografada opcional numa pasta do Google Drive. |
+| **Testes automáticos** | Regras de prazo, filtros e criptografia testadas a cada atualização; se algo falhar, a nova versão não sobe. |
 
 ## Galeria
 
@@ -118,6 +124,7 @@ Se a planilha chegar incompleta (aba vazia, coluna faltando, queda grande no tot
 | ![Etapas do parceiro](imagens/08-etapas-do-parceiro.png) **Etapas do fornecedor parceiro** | ![Alterações](imagens/09-alteracoes-nas-planilhas.png) **O que mudou nas planilhas** |
 | ![Filtros da lista](imagens/16-filtros-da-lista.png) **Busca e filtros por coluna** | ![Selo Mudou](imagens/17-selo-mudou-na-lista.png) **Selo "Mudou" e "Novo" no CRM** |
 | ![O que mudou](imagens/18-o-que-mudou-no-processo.png) **O que mudou no processo** | ![Instruções](imagens/19-instrucoes.png) **Instruções: como cada métrica é calculada** |
+| ![Histórico na ficha](imagens/20-historico-na-ficha.png) **Histórico completo na ficha do processo** | ![Tutorial guiado](imagens/12-tutorial-guiado.png) **Tutorial guiado no primeiro acesso** |
 | ![Guia da data de solução](imagens/10-guia-da-data-de-solucao.png) **Guia em linguagem simples** | ![Administração](imagens/11-administracao.png) **Usuários, lojas e auditoria** |
 
 <p align="center">
@@ -198,6 +205,18 @@ Detalhes em [docs/seguranca.md](docs/seguranca.md).
 | 6 | [Métricas](docs/metricas.md) | Como cada indicador, prioridade e alerta é calculado |
 | 7 | [Segurança](docs/seguranca.md) | Todas as camadas de proteção e o roteiro de homologação |
 | 8 | [Operação](docs/operacao.md) | Atualização, planilha renomeada, aba ou planilha nova e problemas comuns |
+| 9 | [Versões e roadmap](docs/versoes.md) | Changelog de cada versão e o plano do Gario Gestão (2.0) |
+
+## Versões e próximos passos
+
+| Versão | Tema |
+|---|---|
+| **1.0** | Garantias a partir das planilhas |
+| **1.1** (atual) | CSV da lista, filtros lembrados, histórico na ficha, backup criptografado no Drive, testes automáticos e carregamento mais rápido |
+| **1.2** | Avisos automáticos por e-mail e WhatsApp |
+| **2.0** | **Gario Gestão:** núcleo comum, fontes de dados plugáveis (planilhas, banco do ERP, APIs) e módulos de negócio além das garantias |
+
+Detalhes em [Versões e roadmap](docs/versoes.md).
 
 ## Autor
 
