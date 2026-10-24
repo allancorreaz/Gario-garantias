@@ -1,6 +1,6 @@
 # Segurança
 
-[Início](../README.md) · [Funcionalidades](funcionalidades.md) · [Arquitetura](arquitetura.md) · [Stack](stack.md) · [Código e dados](codigo-e-dados.md) · [Dados e sincronização](dados-e-sincronizacao.md) · [Métricas](metricas.md) · [Segurança](seguranca.md) · [Operação](operacao.md)
+[Início](../README.md) · [Funcionalidades](funcionalidades.md) · [Arquitetura](arquitetura.md) · [Stack](stack.md) · [Código e dados](codigo-e-dados.md) · [Dados e sincronização](dados-e-sincronizacao.md) · [Métricas](metricas.md) · [Segurança](seguranca.md) · [Operação](operacao.md) · [Versões](versoes.md)
 
 | Camada | Proteção |
 |---|---|
@@ -17,6 +17,17 @@
 | **Dependências** | Auditoria de vulnerabilidades no roteiro de homologação. |
 | **Auditoria** | Logins, tentativas recusadas ou bloqueadas, trocas de senha, alterações de usuários e sincronizações pedidas, com data, usuário e IP. |
 
+## Backup fora do servidor
+
+As planilhas permitem recriar os processos, mas não os usuários e senhas, a auditoria, o histórico de alterações e as datas de solução detectadas. Por isso cada backup diário pode ganhar uma cópia numa pasta do Google Drive:
+
+| Proteção | Como funciona |
+|---|---|
+| **Acesso separado** | Um segundo acesso ao Drive, autorizado só com o escopo `drive.file`: o Gario enxerga e apaga apenas os arquivos que ele mesmo criou. O acesso das planilhas continua somente leitura, e o sistema se recusa a enviar se os escopos não estiverem assim |
+| **Criptografia** | AES-256-GCM, com chave derivada por scrypt. Sem a chave, guardada fora do servidor, o arquivo no Drive não abre; qualquer alteração no arquivo é detectada |
+| **Retenção** | 30 dias no Drive, além dos 7 dias no servidor |
+| **Falha isolada** | Se o envio falhar, o backup local continua valendo e o aviso aparece na Administração |
+
 ## Roteiro de homologação
 
 Cada atualização passa por um roteiro automatizado antes de entrar no ar:
@@ -24,8 +35,9 @@ Cada atualização passa por um roteiro automatizado antes de entrar no ar:
 1. **Dependências:** auditoria das bibliotecas usadas.
 2. **Sincronização:** testes de leitura das planilhas, incluindo arquivo inexistente e planilha sem mudanças.
 3. **Validação:** conferência completa planilha × banco.
-4. **Compilação:** build da interface com checagem de tipos.
+4. **Testes automáticos e compilação:** regras de prazo, filtros e criptografia do backup; depois, build da interface com checagem de tipos.
 5. **Containers:** construção e subida.
 6. **Acesso e segurança:** mais de 25 testes de login, CSRF, isolamento por loja, troca de senha, desativação e bloqueio por tentativas.
 7. **Backup:** backup do banco.
-8. **Outros sistemas:** conferência de que os outros sistemas do servidor continuaram funcionando.
+8. **Limpeza:** remoção só das imagens antigas do próprio Gario, com o uso do disco.
+9. **Outros sistemas:** conferência de que os outros sistemas do servidor continuaram funcionando.
