@@ -28,6 +28,15 @@ As planilhas permitem recriar os processos, mas não os usuários e senhas, a au
 | **Retenção** | Só as cópias mais recentes ficam no Drive (padrão: 2); a cada envio, as mais antigas são apagadas. No servidor, 7 dias |
 | **Falha isolada** | Se o envio falhar, o backup local continua valendo e o aviso aparece na Administração |
 
+### A chave do backup
+
+A chave de criptografia é um texto aleatório de 44 caracteres que tranca e destranca as cópias do Drive:
+
+- **Para que serve:** antes do envio, o banco é criptografado com ela; o arquivo no Drive só abre com a mesma chave.
+- **Onde fica:** no servidor, só na configuração (fora do código e nunca exibida em log), e numa cópia em local restrito do TI, fora do servidor, para permitir restaurar se o servidor for perdido.
+- **Se for perdida:** as cópias já enviadas não abrem mais; os backups do servidor continuam valendo. Gera-se uma chave nova para os próximos envios.
+- **Se vazar:** troca-se a chave e apagam-se as cópias antigas do Drive.
+
 ## Roteiro de homologação
 
 Cada atualização passa por um roteiro automatizado antes de entrar no ar:
