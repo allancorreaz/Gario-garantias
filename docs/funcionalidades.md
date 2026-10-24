@@ -1,6 +1,6 @@
 # Funcionalidades
 
-[Início](../README.md) · [Funcionalidades](funcionalidades.md) · [Arquitetura](arquitetura.md) · [Stack](stack.md) · [Código e dados](codigo-e-dados.md) · [Dados e sincronização](dados-e-sincronizacao.md) · [Métricas](metricas.md) · [Segurança](seguranca.md) · [Operação](operacao.md)
+[Início](../README.md) · [Funcionalidades](funcionalidades.md) · [Arquitetura](arquitetura.md) · [Stack](stack.md) · [Código e dados](codigo-e-dados.md) · [Dados e sincronização](dados-e-sincronizacao.md) · [Métricas](metricas.md) · [Segurança](seguranca.md) · [Operação](operacao.md) · [Versões](versoes.md)
 
 **Nesta página:** [1. Acesso](#1-acesso) · [2. Visão gerencial](#2-visão-gerencial) · [3. Busca e filtros na lista de processos](#3-busca-e-filtros-na-lista-de-processos) · [4. Detalhamento com um clique](#4-detalhamento-com-um-clique) · [5. Pendências e alertas](#5-pendências-e-alertas) · [6. Etapas do fornecedor parceiro](#6-etapas-do-fornecedor-parceiro) · [7. Alterações nas planilhas](#7-alterações-nas-planilhas) · [8. Guia da data de solução](#8-guia-da-data-de-solução) · [9. Administração](#9-administração) · [10. Ajuda, tutorial e instruções](#10-ajuda-tutorial-e-instruções) · [11. Celular e tablet](#11-celular-e-tablet)
 
@@ -49,6 +49,9 @@ A lista de processos (Rastreabilidade, na Visão gerencial e nas telas de cada p
 
 O contador mostra quantos processos sobraram ("20 de 469 processos"), e **Limpar filtros da lista** volta tudo ao início. Os filtros combinam entre si: por exemplo, *em aberto + loja Norte + 31 a 60 dias*.
 
+- **Exportar CSV:** baixa exatamente os processos da lista, com os filtros aplicados. Na planilha do parceiro, inclui também aprovação, RMA, prazo, nota fiscal, coleta e chegada.
+- **Filtros lembrados:** cada pessoa reabre a tela com os últimos filtros que usou, separados por tela.
+
 ## 4. Detalhamento com um clique
 
 ![Painel de detalhe](../imagens/04-painel-de-detalhe.png)
@@ -57,6 +60,9 @@ Qualquer indicador, item de ranking, faixa de atraso ou mês do gráfico abre um
 
 - **Pesquisa e exportação:** busca por CRM, produto, código, fornecedor, loja ou situação, e exportação em CSV.
 - **Ficha completa:** ao clicar num processo, mostra datas, produto, fornecedor, situação, observações, sinais de atenção e, para o fornecedor parceiro, todas as etapas.
+- **Histórico de mudanças:** no fim da ficha, uma linha do tempo com tudo o que mudou naquele processo desde o início do acompanhamento, com data, quem salvou e cada coluna com o valor antigo e o novo.
+
+![Histórico na ficha](../imagens/20-historico-na-ficha.png)
 - **Tamanho do painel:** abre centralizado e pode ir para tela cheia. No celular, ocupa a tela inteira e vira cartões.
 - **Campo vazio:** aparece como "—" com um ícone de ajuda, que orienta a conferir a planilha e avisar o TI se lá estiver preenchido.
 
