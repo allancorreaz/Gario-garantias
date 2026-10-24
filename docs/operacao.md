@@ -1,6 +1,6 @@
 # Operação e manutenção
 
-[Início](../README.md) · [Funcionalidades](funcionalidades.md) · [Arquitetura](arquitetura.md) · [Stack](stack.md) · [Código e dados](codigo-e-dados.md) · [Dados e sincronização](dados-e-sincronizacao.md) · [Métricas](metricas.md) · [Segurança](seguranca.md) · [Operação](operacao.md)
+[Início](../README.md) · [Funcionalidades](funcionalidades.md) · [Arquitetura](arquitetura.md) · [Stack](stack.md) · [Código e dados](codigo-e-dados.md) · [Dados e sincronização](dados-e-sincronizacao.md) · [Métricas](metricas.md) · [Segurança](seguranca.md) · [Operação](operacao.md) · [Versões](versoes.md)
 
 Os **dados** se atualizam sozinhos. O **código** só muda quando o TI roda a atualização. Nenhum dos comandos abaixo mostra senhas ou tokens.
 
@@ -15,18 +15,20 @@ git fetch origin && git reset --hard origin/main
 bash scripts/homologacao.sh
 ```
 
-O repositório do código é privado, então o `fetch` pede um token de leitura do GitHub. Depois, **Ctrl+F5** no navegador.
+O repositório do código é privado. O servidor acessa com uma **chave de deploy**: uma chave SSH que só lê este repositório, sem senha a cada atualização e que pode ser revogada no GitHub a qualquer momento. Sem a chave, o `fetch` pede um token de leitura. Depois, **Ctrl+F5** no navegador.
 
 ## O que a homologação confere
 
 1. Auditoria de vulnerabilidades das dependências.
 2. Testes da sincronização, incluindo arquivo inexistente e planilha sem mudança.
 3. Validação completa planilha × banco.
-4. Compilação da interface com checagem de tipos.
-5. Construção e subida dos containers.
-6. Mais de 25 testes de login, CSRF, isolamento por loja e bloqueio por tentativas.
-7. Backup do banco.
-8. Conferência de que os outros sistemas do servidor continuam de pé.
+4. Testes automáticos das regras de prazo, dos filtros e da criptografia do backup; se algum falhar, nada sobe.
+5. Compilação da interface com checagem de tipos.
+6. Construção e subida dos containers.
+7. Mais de 25 testes de login, CSRF, isolamento por loja e bloqueio por tentativas.
+8. Backup do banco.
+9. Limpeza só das imagens antigas do Gario e uso do disco.
+10. Conferência de que os outros sistemas do servidor continuam de pé.
 
 ## Quando a planilha for renomeada
 
@@ -57,7 +59,7 @@ O Gario acha cada planilha pelo **nome exato do arquivo** no Drive. Se alguém r
 | Login responde "Falha na comunicação (HTTP 502)" | A API foi recriada e o nginx ficou com o endereço antigo | `docker compose restart web` |
 | Aviso de falha na leitura para todos | Planilha renomeada, movida ou com coluna faltando | Ver o log do sync e seguir a seção da planilha renomeada |
 | Aviso de divergência planilha × banco | Leitura interrompida ou planilha mudando durante a leitura | Sincronizar agora; se continuar, ver Administração → Sincronizações |
-| Disco do servidor cheio | Cache de build do Docker acumulado | `docker builder prune -f` (apaga só cache; nunca apagar imagens com o Gario parado) |
+| Disco do servidor cheio | Cache de build do Docker acumulado | A homologação já limpa as imagens antigas do Gario. O cache de build é compartilhado com outros projetos do servidor: limpe só combinando com os responsáveis |
 | GitHub recusa o login no servidor | Token de leitura expirado | Gerar um novo token, só com leitura do repositório |
 | Google pede para diminuir o ritmo | Limite de requisições do Drive | Nada: a leitura é adiada 5 minutos e retoma sozinha |
 | Número diferente na tela | Planilha preenchida diferente do esperado | Conferir a planilha; se estiver certa, avisar o TI |
@@ -67,4 +69,5 @@ O Gario acha cada planilha pelo **nome exato do arquivo** no Drive. Se alguém r
 - **Quando:** um por dia, de madrugada, além de um a cada homologação.
 - **Verificação:** cada cópia passa por checagem de integridade.
 - **Retenção:** 7 dias, sempre mantendo os mais recentes.
+- **Cópia no Drive (opcional):** criptografada, em pasta própria, com 30 dias de retenção (veja [Segurança](seguranca.md)).
 - **Onde ver:** o resultado aparece em Administração.
