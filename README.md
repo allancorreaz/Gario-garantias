@@ -2,7 +2,7 @@
 
 # Gario
 
-**Gestão de garantias a partir de planilhas, sem abrir mão das planilhas.**
+**Gestão de dados.**
 
 ![Node.js](https://img.shields.io/badge/Node.js-22-339933?logo=nodedotjs&logoColor=white)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
@@ -19,6 +19,19 @@ Projeto independente, idealizado e desenvolvido por **[Allan De Melo Correa](htt
 </div>
 
 > **Sobre este repositório.** Aqui estão a documentação e as imagens do Gario. O código-fonte é privado, porque o sistema é usado em produção por uma empresa. **Todas as imagens foram geradas com dados fictícios**: lojas, fornecedores, produtos, processos e pessoas são inventados.
+
+## Versões e próximos passos
+
+| Versão | Tema |
+|---|---|
+| **1.0** | Garantias a partir das planilhas |
+| **1.1** | CSV da lista, filtros lembrados, histórico na ficha, backup criptografado no Drive, testes automáticos e carregamento mais rápido |
+| **1.2** (atual) | Backup no Drive por quantidade de cópias e projeto organizado; liberada para todos |
+| **1.3** | Avisos automáticos por e-mail e WhatsApp |
+| **2.0** | **Gario Gestão:** núcleo comum, fontes de dados plugáveis (planilhas, banco de dados, APIs) e módulos de negócio além das garantias |
+
+Detalhes em [Versões e roadmap](docs/versoes.md).
+
 
 ---
 
@@ -215,7 +228,7 @@ Detalhes em [docs/seguranca.md](docs/seguranca.md).
 | **1.1** | CSV da lista, filtros lembrados, histórico na ficha, backup criptografado no Drive, testes automáticos e carregamento mais rápido |
 | **1.2** (atual) | Backup no Drive por quantidade de cópias e projeto organizado; liberada para todos |
 | **1.3** | Avisos automáticos por e-mail e WhatsApp |
-| **2.0** | **Gario Gestão:** núcleo comum, fontes de dados plugáveis (planilhas, banco do ERP, APIs) e módulos de negócio além das garantias |
+| **2.0** | **Gario Gestão:** núcleo comum, fontes de dados plugáveis (planilhas, banco de dados, APIs) e módulos de negócio além das garantias |
 
 Detalhes em [Versões e roadmap](docs/versoes.md).
 
